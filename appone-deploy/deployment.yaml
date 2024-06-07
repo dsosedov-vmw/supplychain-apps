@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: one
+  name: appone
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: one
+  template:
+    metadata:
+      labels:
+        app: one
+    spec:
+      containers:
+      - name: container-0
+        image: dsosedovpvtl/appone@sha256:5116a92b6d92878e9a274c6862ca4299bd921071668fb260df6425e4ca1914b5
