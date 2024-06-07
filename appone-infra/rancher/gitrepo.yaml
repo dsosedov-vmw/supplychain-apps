@@ -1,0 +1,9 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: appone
+spec:
+  branch: main
+  paths:
+  - /appone-deploy
+  repo: https://github.com/dsosedov-vmw/supplychain-apps.git
