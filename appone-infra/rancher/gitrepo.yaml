@@ -5,5 +5,5 @@ metadata:
 spec:
   branch: main
   paths:
-  - /appone-deploy
+  - /appone-deploy/rancher
   repo: https://github.com/dsosedov-vmw/supplychain-apps.git

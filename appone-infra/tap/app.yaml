@@ -1,0 +1,36 @@
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: appone
+spec:
+  serviceAccountName: default
+  fetch:
+  - git:
+      url: https://github.com/dsosedov-vmw/supplychain-apps.git
+      ref: origin/main
+      subPath: appone-deploy/tap
+      #! secretRef:
+      #!   name: ado-secret
+  - inline:
+      paths:
+        config.yml: |
+          ---
+          apiVersion: kapp.k14s.io/v1alpha1
+          kind: Config
+          rebaseRules:
+          - path: [metadata, annotations, serving.knative.dev/creator]
+            type: copy
+            sources: [new, existing]
+            resourceMatchers: &matchers
+            - apiVersionKindMatcher: {apiVersion: serving.knative.dev/v1, kind: Service}
+          - path: [metadata, annotations, serving.knative.dev/lastModifier]
+            type: copy
+            sources: [new, existing]
+            resourceMatchers: *matchers
+  template:
+  - ytt: {}
+      #! paths:
+      #!     - ./deploy
+  deploy:
+  - kapp: {}
+      #! intoNs: my-apps
