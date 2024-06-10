@@ -1,0 +1,21 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: appone
+  #! annotations:
+  #!   ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  virtualhost:
+    fqdn: appone.supply-chain.h2o-4-9446.h2o.vmware.com
+    #! tls:
+    #!   secretName: app-tls-cert
+  routes:
+    - conditions:
+      - prefix: /
+      services:
+      - name: appone
+        port: 80
+      #! requestHeadersPolicy:
+      #!   set:
+      #!   - name: Host
+      #!     value: appone.my-apps
