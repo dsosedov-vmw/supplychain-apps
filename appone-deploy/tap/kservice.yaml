@@ -19,3 +19,5 @@ spec:
       - image: dsosedovpvtl/appone@sha256:7b5ee16ef99cc75f009e0ef1414babc9c67d6935ccb59615585b3be18d57db5c
         ports:
         - containerPort: 8080
+        securityContext:
+          runAsNonRoot: true
