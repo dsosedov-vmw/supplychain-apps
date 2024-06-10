@@ -15,7 +15,7 @@ spec:
       services:
       - name: appone
         port: 80
-      #! requestHeadersPolicy:
-      #!   set:
-      #!   - name: Host
-      #!     value: appone.my-apps
+      requestHeadersPolicy:
+        set:
+        - name: Host
+          value: appone.default
