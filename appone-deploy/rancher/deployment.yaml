@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: container-0
-        image: dsosedovpvtl/appone@
+        image: dsosedovpvtl/appone@sha256:9034116215c5528b20eba4f2592bb7fc21033df5f71c7a81e66de82bb5391331
